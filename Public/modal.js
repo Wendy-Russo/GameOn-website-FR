@@ -12,7 +12,6 @@ document.getElementById("main-bloc").insertAdjacentHTML("afterend"," <div class=
 // DOM Elements
 const modalbg   = document.querySelector(".bground");
 const modalBtn  = document.querySelectorAll(".modal-btn");
-//const submitBtn = document.getElementById("submit-btn");
 const form      = document.getElementById("form");
 const formData  = document.querySelectorAll(".formData");
 const closeBtn  = document.querySelectorAll(".close");
@@ -22,17 +21,15 @@ const lastName  = document.getElementById("last");
 const email     = document.getElementById("email");
 const birthDate = document.getElementById("birthdate");
 const quantity  = document.getElementById("quantity");
-//var radio     = document.getElementsByClassName("checkbox-input");
 var radio1 = document.getElementById("location1");
 var radio2 = document.getElementById("location2");
 var radio3 = document.getElementById("location3");
 var radio4 = document.getElementById("location4");
 var radio5 = document.getElementById("location5");
 var radio6 = document.getElementById("location6");
-
-
 const checkUse  = document.getElementById("checkbox1");
 
+// VALIDATION PATTERNS
 const submitBtn = document.querySelectorAll(".btn-submit");
 var wordPattern = /^[A-zàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð,.'--]{2,}$/
 var mailPattern = /^[A-z0-9@._-]{1,}$/
@@ -40,20 +37,9 @@ var numPattern  = /^[0-9]{1,2}$/
 var nameError = document.createTextNode("Adadzd");
 var  closedMerci = false;
 
-modalBtn.forEach((btn) => btn.addEventListener("click",function(){
-  modalbg.style.display = "block"
-}));
-
-closeBtn.forEach((btn) => btn.addEventListener("click",function(){
-  modalbg.style.display = "none"
-}));
 
 
-//location.style.border = 'solid red'
-
-
-
-
+// HTML ELEMENTS
 firstName.insertAdjacentHTML("afterend","<p class =\"error\" id =\"firstNameError\"> Veuillez entrer 2 caractères ou plus pour le champ du nom.</p>");
 lastName.insertAdjacentHTML ("afterend","<p id =\"lastNameError\"> Veuillez entrer 2 caractères ou plus pour le champ du nom.</p>");
 email.insertAdjacentHTML    ("afterend","<p id =\"emailError\" >Veuillez entrer une E-mail valide</p>");
@@ -62,6 +48,7 @@ quantity.insertAdjacentHTML ("afterend","<p id =\"quantity1Error\" >Vous devez c
 birthDate.insertAdjacentHTML("afterend","<p id =\"birthDateError\">Vous devez entrer votre date de naissance</p>");
 checkUse.nextElementSibling.insertAdjacentHTML("afterend","<p id =\"chechUseError\">Vous devez vérifier que vous acceptez les termes et conditions.</p>");
 
+// HTML STYLES
 document.getElementById("firstNameError").style.display="none";
 document.getElementById("lastNameError").style.display="none";
 document.getElementById("emailError").style.display="none";
@@ -69,18 +56,25 @@ document.getElementById("quantityError").style.display="none";
 document.getElementById("quantity1Error").style.display="none";
 document.getElementById("birthDateError").style.display="none";
 document.getElementById("chechUseError").style.display="none";
-
 document.getElementById("merciButton").style.margin="5rem 3rem";
 document.getElementById("remerciments").style.display="none";
 document.getElementById("remerciments").style.margin="50% auto";
 
+// EVENT LISTENERS
+modalBtn.forEach((btn) => btn.addEventListener("click",function(){
+  modalbg.style.display = "block"
+}));
 
 closeBtn.forEach((btn) => btn.addEventListener("click",function(){
   modalbg.style.display = "none"
+}));
+closeBtn.forEach((btn) => btn.addEventListener("click",function(){
   closedMerci = true;
+  modalbg.style.display = "none"
+
 }));
 
-
+// SUBMIT CHECK
 form.addEventListener('submit',(e) => {
   let errors = []
   //FIRST NAME
@@ -176,7 +170,7 @@ form.addEventListener('submit',(e) => {
     checkUse.nextElementSibling.style.border = 'solid transparent'
     document.getElementById("chechUseError").style.display="none";
   }
-
+  //THANK YOU BOX
   if (errors.length == 0 && closedMerci == false){
     document.getElementById("main-bloc").style.display="none";
     document.getElementById("merciButton").parentElement.style.display="block";
@@ -186,6 +180,3 @@ form.addEventListener('submit',(e) => {
   if (errors.length > 0 || closed.length > 0){
     e.preventDefault();
   }})
-
-
-  //
