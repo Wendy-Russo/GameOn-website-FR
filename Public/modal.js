@@ -34,7 +34,7 @@ const submitBtn = document.querySelectorAll(".btn-submit");
 var wordPattern = /^[A-zàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð,.'--]{2,}$/
 var mailPattern = /^[A-z0-9@._-]{1,}$/
 var numPattern  = /^[0-9]{1,2}$/
-var nameError = document.createTextNode("Adadzd");
+var nameError = document.createTextNode("SampleError");
 var  closedMerci = false;
 
 
@@ -58,7 +58,7 @@ document.getElementById("birthDateError").style.display="none";
 document.getElementById("chechUseError").style.display="none";
 document.getElementById("merciButton").style.margin="5rem 3rem";
 document.getElementById("remerciments").style.display="none";
-document.getElementById("remerciments").style.margin="50% auto";
+document.getElementById("remerciments").style.margin="20% auto";
 
 // EVENT LISTENERS
 modalBtn.forEach((btn) => btn.addEventListener("click",function(){
@@ -78,7 +78,6 @@ closeBtn.forEach((btn) => btn.addEventListener("click",function(){
 form.addEventListener('submit',(e) => {
   let errors = []
   //FIRST NAME
-
   if (!firstName.value.trim().match(wordPattern)){
     errors.push(nameError)
     firstName.style.border = 'solid red'
@@ -157,7 +156,6 @@ form.addEventListener('submit',(e) => {
       document.getElementById("quantityError").style.display="none";
     }
   }
-
   //CHECKBOX USE CONDITIONS
   if (!checkUse.checked){
     errors.push(nameError)
